@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -9,21 +10,34 @@ import HeroCanvas from "@/components/HeroCanvas"; // Import the new canvas compo
 import Navbar from "@/components/Navbar";
 import AnimatedSection from "@/components/AnimatedSection"; // Import the new wrapper
 import HeroCanvas1 from "@/components/HeroCanvas1";
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center relative"> {/* Added relative positioning */}
-      {/* Navigation would typically go here */}
-      <Navbar /> {/* Add the Navbar component here */}
+    <main className="flex flex-col items-center justify-center relative">
+      <Navbar />
 
-      {/* Hero Section */}
-      {/* Added relative positioning and overflow-hidden */}
       <section id="hero" className="min-h-screen w-full flex items-center justify-center text-center px-4 relative overflow-hidden">
-         {/* <HeroCanvas />  */}
          <HeroCanvas1 />
-         <div className="z-10"> {/* Ensure text is above the canvas */}
-           <h1 className="text-4xl md:text-6xl font-bold mb-4">Srikant Satapathy</h1>
-           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300">MERN Full Stack Developer</p>
+         <div className="z-10">
+           <h1 className="text-4xl md:text-6xl font-bold mb-4">
+             Srikant <span className="text-[#ff6d33]">Satapathy</span>
+           </h1>
+           <TypeAnimation
+             sequence={[
+               'MERN',
+               1000,
+               'MERN Full Stack Developer',
+               2000,
+               ' ',
+               1000,
+             ]}
+             wrapper="p"
+             speed={50}
+             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300"
+             repeat={Infinity}
+             cursor={true}
+           />
          </div>
       </section>
 

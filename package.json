@@ -17,6 +17,7 @@
     "react": "^19",
     "react-dom": "^19",
     "react-scroll": "^1.9.3",
+    "react-type-animation": "^3.2.0",
     "three": "^0.176.0"
   },
   "devDependencies": {
