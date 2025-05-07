@@ -76,7 +76,7 @@ const FloatingEmoji = ({ emoji, initialPosition, floatSpeed, driftSpeed }: { emo
     <Text
       ref={textRef}
       position={initialPosition}
-      fontSize={0.5 + Math.random() * 0.2} // Decreased emoji size significantly
+      fontSize={0.5 + Math.random() * 0.1} // Decreased emoji size significantly
       color="#B3B3B3FF" // Emojis have their own colors; this is a fallback.
       anchorX="center"
       anchorY="middle"
