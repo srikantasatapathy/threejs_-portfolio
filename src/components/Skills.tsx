@@ -13,7 +13,7 @@ const Skills = () => {
         <h2 className="text-3xl font-bold text-center mb-8">Skills</h2>
         <div className="flex flex-wrap justify-center gap-4">
           {skills.map((skill, index) => (
-            <span key={index} className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+            <span key={index} className="bg-[#ff6d33] text-white px-4 py-2 rounded-full text-sm font-medium">
               {skill}
             </span>
           ))}

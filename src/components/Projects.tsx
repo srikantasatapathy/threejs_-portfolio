@@ -34,7 +34,7 @@ const Projects = () => {
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-[#ff6d33] hover:underline">
                   View Project
                 </a>
               </div>

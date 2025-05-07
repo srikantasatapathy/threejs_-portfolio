@@ -27,8 +27,8 @@ const Navbar = () => {
           smooth={true}
           duration={500}
           spy={true}
-          offset={-70} // Adjust offset based on navbar height
-          className="text-xl font-bold cursor-pointer hover:text-blue-500 dark:hover:text-blue-400"
+          offset={-70}
+          className="text-xl font-bold cursor-pointer hover:text-[#ff6d33] dark:hover:text-[#ff6d33]"
         >
           Srikant S.
         </ScrollLink>
@@ -41,10 +41,10 @@ const Navbar = () => {
               to={item}
               smooth={true}
               duration={500}
-              spy={true} // Highlights the link when the section is in view
-              activeClass="text-blue-600 dark:text-blue-400 font-semibold" // Style for active link
-              offset={-70} // Adjust offset
-              className="capitalize cursor-pointer hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              spy={true}
+              activeClass="text-[#ff6d33] dark:text-[#ff6d33] font-semibold"
+              offset={-70}
+              className="capitalize cursor-pointer hover:text-[#ff6d33] dark:hover:text-[#ff6d33] transition-colors"
             >
               {item === 'hero' ? 'Home' : item}
             </ScrollLink>
