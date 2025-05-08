@@ -28,7 +28,7 @@ const Navbar = () => {
           duration={500}
           spy={true}
           offset={-70}
-          className="text-xl font-bold cursor-pointer hover:text-[#ff6d33] dark:hover:text-[#ff6d33]"
+          className="text-xl font-bold cursor-pointer text-[#ff6d33] dark:hover:text-[#ff6d33]"
         >
           Srikant S.
         </ScrollLink>

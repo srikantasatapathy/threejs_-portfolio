@@ -69,6 +69,10 @@ const FloatingEmoji = ({ emoji, initialPosition, floatSpeed, driftSpeed }: { emo
       if (textRef.current.position.y < -viewport.height / 1.8) textRef.current.position.y = viewport.height / 1.8;
       if (textRef.current.position.z > 6) textRef.current.position.z = -6; // Adjusted Z boundary slightly
       if (textRef.current.position.z < -6) textRef.current.position.z = 6;
+
+      // Add subtle glow effect through opacity
+      const glowPulse = (Math.sin(timeRef.current) + 1) * 0.5;
+      textRef.current.material.opacity = 0.85 + glowPulse * 0.15;
     }
   });
 
@@ -76,10 +80,11 @@ const FloatingEmoji = ({ emoji, initialPosition, floatSpeed, driftSpeed }: { emo
     <Text
       ref={textRef}
       position={initialPosition}
-      fontSize={0.5 + Math.random() * 0.1} // Decreased emoji size significantly
-      color="#B3B3B3FF" // Emojis have their own colors; this is a fallback.
+      fontSize={0.5 + Math.random() * 0.1}
       anchorX="center"
       anchorY="middle"
+      transparent={true}
+      // Remove color property to keep natural emoji colors
     >
       {emoji}
     </Text>
@@ -132,22 +137,23 @@ const SpaceEmojiField = ({ count = 20 }) => { // Slightly reduced default count 
 const HeroCanvas = () => {
   return (
     <Canvas
-      // Set the background to black
-      gl={{ antialias: true, alpha: false }} // alpha: false if you want an opaque background
-      onCreated={({ gl }) => {
-        gl.setClearColor('#000000'); // Black background
+      gl={{ 
+        antialias: true, 
+        alpha: false,
+        preserveDrawingBuffer: true // This can help with emoji rendering
       }}
-      camera={{ position: [0, 0, 12], fov: 55 }} // Adjusted camera slightly
+      onCreated={({ gl }) => {
+        gl.setClearColor('#000000');
+      }}
+      camera={{ position: [0, 0, 12], fov: 55 }}
       style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
     >
       <Suspense fallback={null}>
-        <ambientLight intensity={0.5} /> {/* Ambient light for emojis if needed */}
-        {/* No strong directional light needed for this effect */}
-
-        <BackgroundStars /> {/* Add the star background */}
-        <SpaceEmojiField count={25} /> {/* Emojis on top */}
-
-        {/* <OrbitControls enableZoom={true} enablePan={true} /> */}
+        <ambientLight intensity={0.8} /> {/* Increased ambient light for better emoji visibility */}
+        <pointLight position={[10, 10, 10]} intensity={0.5} /> {/* Added point light for depth */}
+        
+        <BackgroundStars />
+        <SpaceEmojiField count={25} />
       </Suspense>
       <Preload all />
     </Canvas>
